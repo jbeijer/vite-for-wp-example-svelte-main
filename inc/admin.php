@@ -60,7 +60,7 @@ function enqueue_admin_assets( string $hook_suffix ) : void { // Changed signatu
         // If the Vite helper class/namespace changed, update this line accordingly.
         // Based on previous context, it might be \Kucrut\ViteForWP\Vite\enqueue_asset
         // Correct function call based on vendor package structure
-        \Kucrut\Vite\enqueue_asset( dirname( __DIR__ ) . '/dist', 'app/src/admin.js', ['handle' => 'vite-svelte-example-admin-script'] );
+        \Kucrut\Vite\enqueue_asset( dirname( __DIR__ ) . '/app/dist', 'app/src/admin.js', ['handle' => 'vite-svelte-example-admin-script'] );
         error_log('Vite Svelte Debug: enqueue_asset successfully called for admin.js.');
     } catch (\Exception $e) {
         error_log('Vite Svelte Debug: Error calling enqueue_asset: ' . $e->getMessage());
