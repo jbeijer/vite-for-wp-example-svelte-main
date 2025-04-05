@@ -12,8 +12,8 @@ use Kucrut\Vite;
  * @return void
  */
 function bootstrap(): void {
-	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_script' );
-	add_action( 'wp_footer', __NAMESPACE__ . '\\render_app' );
+	\add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_script' );
+	\add_action( 'wp_footer', __NAMESPACE__ . '\\render_app' );
 }
 
 /**
@@ -35,6 +35,18 @@ function enqueue_script(): void {
 		[
 			'handle' => 'vite-for-wp-svelte',
 			'in-footer' => true,
+		]
+	);
+
+	// Get the saved display text.
+	$displayText = \get_option( 'vite_svelte_display_text', 'Default Frontend Text' );
+
+	// Pass the text to the frontend script.
+	\wp_localize_script(
+		'vite-for-wp-svelte',
+		'viteSvelteFrontendData',
+		[
+			'displayText' => $displayText,
 		]
 	);
 }

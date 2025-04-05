@@ -2,6 +2,15 @@
 	import svelteLogo from "./assets/svelte.svg";
 	import viteLogo from "./assets/vite.svg";
 	import Counter from "./lib/Counter.svelte";
+
+	// Access the localized display text, provide fallback
+	// Access the localized display text from the window object, provide fallback
+	const displayContent =
+		typeof window !== "undefined" &&
+		typeof window.viteSvelteFrontendData !== "undefined" &&
+		window.viteSvelteFrontendData?.displayText
+			? window.viteSvelteFrontendData.displayText
+			: "Default Text"; // Fallback text
 </script>
 
 <main>
@@ -18,7 +27,7 @@
 	<div class="card">
 		<Counter />
 	</div>
-	<p>Johan</p>
+	<p>{displayContent}</p>
 
 	<p>
 		Check out <a href="https://kit.svelte.dev/" target="_blank" rel="noreferrer"
